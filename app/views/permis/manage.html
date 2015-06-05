@@ -1,0 +1,846 @@
+<!-- HEADER -->
+
+<div class="row">
+	<a href="#/" class="btn btn-default">Retour</a>
+	<a href="#/" class="btn btn-default pull-right">Retour</a>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-12">
+		<h3>
+			Demande de travail: <i>({{permis.WSQ_PREF}})</i> <strong>{{permis.PERMIS}}</strong>
+			<span class="text-success"> -- {{action}}</span>
+		</h3>
+	</div>
+
+<!-- 	<div class="col-md-6 well">
+	</div> -->
+
+</div>
+<!-- END HEADER -->
+
+
+<br/>
+
+
+
+<div class="row sections">
+	<div class="col-md-10 col-md-offset-1">
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 1 -->
+		<h4>1. Secteur et description du travail / Area and description of work</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Type de travail:</td>
+						<td>
+							<label>Espace clos <input type="checkbox"  ng-model="permis.S1_Type_IN"/></label>
+						</td>
+						<td>
+							<label>Travail à froid <input type="checkbox"  ng-model="permis.S1_Type_AC"/></label>
+						</td>
+						<td>
+							<label>Travail à chaud <input type="checkbox"  ng-model="permis.S1_Type_AF"/></label>
+						</td>
+						<td>
+							<label>Entrée de véhicule <input type="checkbox"  ng-model="permis.S1_Type_TR"/></label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Date: </td>
+						<td>
+							<datepicker max-mode="day" min-mode="day" min-date="minDate" ng-model="today"></datepicker>
+						</td>
+						<td>{{permis.S1_DATE_EMISSION | date}}</td>
+						<td>Heure de: </td>
+						<td>
+							<select class="form-control" ng-model="permis.S1_HEURE_DE">
+								<option value="6.00">6.00</option>
+								<option selected value="7.00">7.00</option>
+								<option value="8.00">8.00</option>
+								<option value="9.00">9.00</option>
+								<option value="10.00">10.00</option>
+								<option value="11.00">11.00</option>
+								<option value="12.00">12.00</option>
+								<option value="13.00">13.00</option>
+								<option value="14.00">14.00</option>
+								<option value="15.00">15.00</option>
+								<option value="16.00">16.00</option>
+								<option value="17.00">17.00</option>
+								<option value="18.00">18.00</option>
+							</select>
+						</td>
+						<td>à:</td>
+						<td>
+							<select class="form-control" ng-model="permis.S1_HEURE_A">
+								<option value="6.00">6.00</option>
+								<option value="7.00">7.00</option>
+								<option value="8.00">8.00</option>
+								<option value="9.00">9.00</option>
+								<option value="10.00">10.00</option>
+								<option value="11.00">11.00</option>
+								<option value="12.00">12.00</option>
+								<option value="13.00">13.00</option>
+								<option value="14.00">14.00</option>
+								<option value="15.00">15.00</option>
+								<option value="16.00">16.00</option>
+								<option value="17.00">17.00</option>
+								<option selected value="18.00">18.00</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>L'exécutant:</td>
+						<td ng-show="pageType != 'copy'">
+							<select class="form-control" ng-model="permis.S1_ENTREPRENEURIAT" ng-change="setExec()">
+								<option value="Entrepreneur / contractor">Entrepreneur</option>
+								<option value="Parachem">ParaChem</option>
+							</select>
+						</td>
+						<td ng-show="pageType == 'copy'">
+							<input type="text" readonly class="form-control" ng-model="permis.S1_ENTREPRENEURIAT"/>
+						</td>
+						<td ng-show="pageType != 'copy'">
+							<select class="form-control" ng-model="permis.S1_RESPONSABLEEXECUTANT" ng-options="item.Title as item.Title for item in execs"></select>
+						</td>
+						<td ng-show="pageType == 'copy'">
+							<input type="text" readonly class="form-control" ng-model="permis.S1_RESPONSABLEEXECUTANT"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Secteur / Area</td>
+						<td><input type="text" class="form-control" readonly ng-model="permis.S1_SECTEUR"/></td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea readonly ng-model="permis.FUN_DESCR" class="form-control"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>No. équipement / equipment no.</td>
+						<td><input type="text" class="form-control" readonly ng-model="permis.FUN_CODE"/></td>
+						<td>Description equip.</td>
+						<td><input type="text" class="form-control" readonly ng-model="permis.FUN_DESCR"/></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+		</div>
+
+
+<!-- END SECTION 1 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 2 -->
+		<h4>2. Équipements de sécurité et conditions sécuritaires / Required safety equipment and secured conditions requested</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_OP_OA"/>
+								Opérateur prévenu / Operator advised
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AE_EA"/>
+								Autorisation d'excavation / Excavation approval
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_PR_RP"/>
+								Protection respiratoire / Respiratory protection
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AS_WA"/>
+								Autorisation pour soudure / Welding approval
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_PY_EF"/>
+								Protection des yeux-visage / Eyes-face protection
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_SB_BA"/>
+								Secteur barricadé / Area barricated
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_PA_EP"/>
+								Protection auditive / Ear protection
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EP_PS"/>
+								Écran de protection / Protective screen
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_VP_PC"/>
+								Vêtements de protection / Protective clothing
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_OM_ME"/>
+								Outillage motorisé / Motorized equipment
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_HS_SH"/>
+								Harnais de sécurité (9+) / Safety harness (9+)
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_VA_MV"/>
+								Véhicule automobile / Motor vehicle
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_CA_LL"/>
+								Corde d'assurance / Life line
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_DG_GD"/>
+								Détecteur de gaz / Gas detector
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EC_SC"/>
+								Échafaudage / Scaffolding
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_CR_RC"/>
+								Communication radio / Radio communication
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EA_SL"/>
+								Échelle attachée / Secured ladder
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_MT_EG"/>
+								Mise à la terre des équipements / Equipment grounded
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_VF_AM"/>
+								Ventilsation forcée / Air mover
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_OA_SP"/>
+								Outils anti-étincelle / Spark-proof tools
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AL_LE"/>
+								Appareil de levage / Lifting equipment
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EA_EP"/>
+								Équipement anti-déflagrant / Explosion-proof equipment
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AL_LA"/>
+								Autorisation de levage / Lifting approval
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_OP_AD"/>
+								Équipement anti-déflagrant / Explosion-proof equipment
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EA_AL"/>
+								Éclairage d'appoint / Additional lighting
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_BE_WH"/>
+								Boyau à eau / Water hose
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_EX_FE"/>
+								Extincteur / Fire extinguisher
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_CP_PL"/>
+								Cadenas personnel / Personal lock
+							</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+<!-- 		<div class="col-md-6">
+			<table class="table">
+				<tr ng-repeat="cond in conditions | filter:{ Side: 'left'}">
+					<td>
+						<label>
+							<input type="checkbox" ng-model="permis[cond.Title]" />
+							<span>{{cond.Francais}} / {{cond.Anglais}}</span>
+						</label>
+					</td>
+					
+				</tr>
+			</table>
+		</div>
+
+		<div class="col-md-6">
+			<table class="table">
+				<tr ng-repeat="cond in conditions | filter:{ Side: 'right'}">
+					<td>
+						<label>
+							<input type="checkbox" ng-model="permis[cond.Title]"/>
+							<span>{{cond.Francais}} / {{cond.Anglais}}</span>
+						</label>
+					</td>			
+				</tr>
+			</table>
+		</div> -->
+<!-- END SECTION 2 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 3 -->
+		<h4>3. Surveillance des travaux / Work surveillance</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S3_SE_CS"/>
+								<span>Surveillant entrée en espace clos / Confined space lookout man</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S3_SI_FL"/>
+								<span>Surveillant d'incendie / Fire lookout man</span>
+							</label>
+						</td>	
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- END SECTION 3 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 4 -->
+		<h4>4. Préparatifs des travaux / General safety preparations</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<caption>Réservoirs, conduites, etc / Vessels, lines, etc</caption>
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_DR_DR"/>
+								<span>Drainés / Drained</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_LA_CL"/>
+								<span>Lavés / cleaned</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_ER_DC"/>
+								<span>Égouts recouverts / Drains convered</span>
+							</label>
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_PU_PU"/>
+								<span>Purgés / Purged</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_AE_VE"/>
+								<span>Aérés / Ventilated</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_OB_BL"/>
+								<span>Obturés / Blanked</span>
+							</label>
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_NV_ST"/>
+								<span>Néttoyés à la vapeur / Steamed</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_DE_DE"/>
+								<span>Dépréssurisés / Depressurized</span>
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_CS_ES"/>
+								<span>Contrôle des sources d'énergie / Energy sources controled</span>
+							</label>
+						</td>	
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S4_AU_OT"/>
+								<span>Autres / Others</span>
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S4_AU_OT_DESCRIPTION" placeholder="Entrez un préparatif supplémentaire"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- END SECTION 4 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 5 -->
+		<h4>5. Risques spécifiques / Specific hazards</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_ZC_CA"/>
+								Zone classifiés / Classified area
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_ZC_CA_DESCRIPTION"/>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_GI_IG"/>
+								Gaz inerte /Inert gas
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_GI_IG_DESCRIPTION"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_SR_RS"/>
+								Sources radioactives / Radiocatives sources
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_SR_RS_DESCRIPTION"/>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_RS_UH"/>
+								Risques souterrains / Underground hazards
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_RS_UH_DESCRIPTION"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_RA_AH"/>
+								Risques aériens / Aerial hazards
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_RA_AH_DESCRIPTION"/>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_AM_AS"/>
+								Amiante / Asbestos
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_AM_AS_DESCRIPTION"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_AU_OT"/>
+								Présence de serpentins chauffants actifs
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_AU_OT_DESCRIPTION"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- END SECTION 5 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 6 -->
+		<h4>6. Vérification atmosphérique / Atmospheric verification</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Heure / Hour</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Oxygène / Oxygen</td>
+						<td>%</td>
+						<td>%</td>
+						<td>%</td>
+					</tr>
+					<tr>
+						<td>Combustible</td>
+						<td>%</td>
+						<td>%</td>
+						<td>%</td>
+					</tr>
+					<tr>
+						<td>H<sub>2</sub>S</td>
+						<td>ppm</td>
+						<td>ppm</td>
+						<td>ppm</td>
+					</tr>
+					<tr>
+						<td>CO</td>
+						<td>ppm</td>
+						<td>ppm</td>
+						<td>ppm</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+<!-- END SECTION 6 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 7 -->
+		<h4>7. Autres exigences / Other requirements</h4>
+		<div class="col-md-12 section">
+			<textarea class="form-control" ng-model="permis.S7_AE_OR_DESCRIPTION" rows="8" placeholder="Entrez des exigences supplémentaires"></textarea>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Les conditions préparatoires ci-haut ont été controllées<br/>The above preparatory requirements have been verified.</td>
+						<td>Heure: </td>
+						<td><input type="text" class="form-control" ng-model="permis.S7_HEURE" placeholder="Entrez l'heure"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- END SECTION 7 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 8 -->
+		<h4>8. Approbation</h4>
+		<div class="col-md-12 section">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Émis par / Issued by: </td>
+						<td><input type="text" readonly class="form-control" ng-model="permis.S8_USERNAME"/></td>
+						<td>Heure: </td>
+						<td><input type="text" class="form-control" ng-model="permis.S8_HEURE" placeholder="Entrez l'heure"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- END SECTION 8 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<br/>
+		<div class="pull-right">
+			<button ng-click="print()" class="btn btn-success">Imprimer</button>
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

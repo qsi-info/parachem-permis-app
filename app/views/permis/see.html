@@ -1,0 +1,63 @@
+<div class="row">
+	<a href="#/" class="btn btn-default">Retour</a>
+	<a href="#/" class="btn btn-default pull-right">Retour</a>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<h3>Consultation d'un permis existant</h3>
+	</div>
+</div>
+
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+      <input type="text" class="form-control" placeholder="Enter a search request" ng-model="search">
+
+    </div>      
+  </div>
+</form>
+
+<table class="table table-hover">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>
+					<a href="javascript:;" ng-click="sortType = 'PERMIS'; sortReverse = !sortReverse">
+						Permis
+						<span ng-show="sortType == 'PERMIS' && !sortReverse" class="fa fa-caret-down"></span>
+						<span ng-show="sortType == 'PERMIS' && sortReverse" class="fa fa-caret-up"></span>
+					</a>
+				</th>
+				<th>
+					<a href="javascript:;" ng-click="sortType = 'FUN_DESCR'; sortReverse = !sortReverse">
+						Description
+						<span ng-show="sortType == 'FUN_DESCR' && !sortReverse" class="fa fa-caret-down"></span>
+						<span ng-show="sortType == 'FUN_DESCR' && sortReverse" class="fa fa-caret-up"></span>
+					</a>
+				</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+
+<!-- 	<thead>
+		<tr>
+			<th>Permis</th>
+			<th>Description</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead> -->
+	<tbody>
+		<tr ng-repeat="p in permis | orderBy:sortType:sortReverse | filter:search" data-toggle="tooltip" data-placement="bottom" title="{{p.WOR_DESCR}}">
+			<td>{{p.PERMIS}}</td>
+			<td>{{p.FUN_DESCR}}</td>
+			<td>
+				<a ng-click="print(p.id)" class="btn btn-sm btn-default">Imprimer</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

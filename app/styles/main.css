@@ -1,0 +1,24 @@
+.tile-status span {
+	margin-right: 5px !important;
+}
+
+body {
+	padding-bottom: 50px;
+	margin-top: 10px;
+}
+
+
+
+
+
+.sections h4 {
+  color: #E51400;
+}
+
+.sections .section {
+  margin-bottom: 50px;
+}
+
+
+
+.nav, .pagination, .carousel, .panel-title, a { cursor: pointer !important; }
