@@ -56,7 +56,8 @@
 			<td>{{p.PERMIS}}</td>
 			<td>{{p.FUN_DESCR}}</td>
 			<td>
-				<a ng-click="print(p.id)" class="btn btn-sm btn-default">Imprimer</a>
+				<!-- <a ng-click="print(p.id)" class="btn btn-sm btn-default">Imprimer</a> -->
+				<a class="btn btn-sm btn-default" href="#/permis/see/{{p.id}}">Consulter</a>
 			</td>
 		</tr>
 	</tbody>

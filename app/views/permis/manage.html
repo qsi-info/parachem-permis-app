@@ -29,7 +29,7 @@
 	<div class="col-md-10 col-md-offset-1">
 
 
-
+<fieldset ng-disabled="isReadOnly">
 
 
 
@@ -65,10 +65,10 @@
 				<tbody>
 					<tr>
 						<td>Date: </td>
-						<td>
+						<td ng-show="pageType !== 'see'">
 							<datepicker max-mode="day" min-mode="day" min-date="minDate" ng-model="today"></datepicker>
 						</td>
-						<td>{{permis.S1_DATE_EMISSION | date}}</td>
+						<td>{{permisDate | date:'dd-MM-yyyy'}}</td>
 						<td>Heure de: </td>
 						<td>
 							<select class="form-control" ng-model="permis.S1_HEURE_DE">
@@ -139,11 +139,11 @@
 				<tbody>
 					<tr>
 						<td>Secteur / Area</td>
-						<td><input type="text" class="form-control" readonly ng-model="permis.S1_SECTEUR"/></td>
+						<td><input type="text" class="form-control" ng-readonly="pageType != 'blank'" ng-model="permis.S1_SECTEUR"/></td>
 					</tr>
 					<tr>
 						<td>Description</td>
-						<td><textarea readonly ng-model="permis.FUN_DESCR" class="form-control"></textarea></td>
+						<td><textarea ng-readonly="pageType != 'blank'" ng-model="permis.FUN_DESCR" class="form-control"></textarea></td>
 					</tr>
 				</tbody>
 			</table>
@@ -154,9 +154,9 @@
 				<tbody>
 					<tr>
 						<td>No. équipement / equipment no.</td>
-						<td><input type="text" class="form-control" readonly ng-model="permis.FUN_CODE"/></td>
+						<td><input type="text" class="form-control" ng-readonly="pageType != 'blank'" ng-model="permis.FUN_CODE"/></td>
 						<td>Description equip.</td>
-						<td><input type="text" class="form-control" readonly ng-model="permis.FUN_DESCR"/></td>
+						<td><input type="text" class="form-control" ng-readonly="pageType != 'blank'" ng-model="permis.FUN_DESCR"/></td>
 					</tr>
 				</tbody>
 			</table>
@@ -821,12 +821,14 @@
 
 
 
+</fieldset>
 
 
 		<br/>
 		<div class="pull-right">
 			<button ng-click="print()" class="btn btn-success">Imprimer</button>
 		</div>
+
 
 
 	</div>
