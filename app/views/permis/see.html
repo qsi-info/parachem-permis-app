@@ -53,7 +53,7 @@
 	</thead> -->
 	<tbody>
 		<tr ng-repeat="p in permis | orderBy:sortType:sortReverse | filter:search" data-toggle="tooltip" data-placement="bottom" title="{{p.WOR_DESCR}}">
-			<td>{{p.PERMIS}}</td>
+			<td>{{p.WOR_PREF}} - {{p.PERMIS}}</td>
 			<td>{{p.FUN_DESCR}}</td>
 			<td>
 				<!-- <a ng-click="print(p.id)" class="btn btn-sm btn-default">Imprimer</a> -->

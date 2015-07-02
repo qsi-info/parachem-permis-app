@@ -397,8 +397,6 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	$scope.today = new Date();
 
-
-
 	$scope.pageType = 'blank';
 	$scope.minDate = new Date();
 
@@ -407,10 +405,13 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	.success(function (permis) {
 		$scope.permis = {
 			S2_OP_OA: true,
-			PERMIS: '00000' + permis.length + 1,
+			WOR_NO: '0000',
 			WSQ_PREF: 'Z',
+			NO_PERMIS: permis.length + 1,
+			PERMIS: '0000' + (permis.length + 1),
 		};		
 		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
+
 	})
 
 
