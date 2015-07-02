@@ -34,9 +34,16 @@
 				</th>
 				<th>
 					<a href="javascript:;" ng-click="sortType = 'FUN_DESCR'; sortReverse = !sortReverse">
-						Description
+						Secteur
 						<span ng-show="sortType == 'FUN_DESCR' && !sortReverse" class="fa fa-caret-down"></span>
 						<span ng-show="sortType == 'FUN_DESCR' && sortReverse" class="fa fa-caret-up"></span>
+					</a>
+				</th>
+				<th>
+					<a href="javascript:;" ng-click="sortType = 'WOR_DESCR'; sortReverse = !sortReverse">
+						Description
+						<span ng-show="sortType == 'WOR_DESCR' && !sortReverse" class="fa fa-caret-down"></span>
+						<span ng-show="sortType == 'WOR_DESCR' && sortReverse" class="fa fa-caret-up"></span>
 					</a>
 				</th>
 				<th>&nbsp;</th>
@@ -52,12 +59,12 @@
 		</tr>
 	</thead> -->
 	<tbody>
-		<tr ng-repeat="p in permis | orderBy:sortType:sortReverse | filter:search" data-toggle="tooltip" data-placement="bottom" title="{{p.WOR_DESCR}}">
-			<td>{{p.WOR_PREF}} - {{p.PERMIS}}</td>
+		<tr ng-repeat="p in permis | orderBy:sortType:sortReverse | filter:search" title="{{p.WOR_DESCR}}">
+			<td>{{p.PERMIS}}</td>
 			<td>{{p.FUN_DESCR}}</td>
+			<td>{{p.WOR_DESCR.substring(0,50)}}...</td>
 			<td>
-				<!-- <a ng-click="print(p.id)" class="btn btn-sm btn-default">Imprimer</a> -->
-				<a class="btn btn-sm btn-default" href="#/permis/see/{{p.id}}">Consulter</a>
+				<a class="btn btn-sm btn-primary" href="#/permis/see/{{p.id}}">Consulter</a>
 			</td>
 		</tr>
 	</tbody>

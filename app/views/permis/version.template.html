@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body">
 	<ul class="nav">
-		<li ng-repeat="item in list">
+		<li ng-repeat="item in list | orderBy:PERMIS">
 			<a ng-click="goTo(item)">
 				<strong>{{item.PERMIS}}</strong><br/>
 				<p>{{item.WOR_DESCR}}</p>

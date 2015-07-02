@@ -114,10 +114,10 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	cfpLoadingBar.start();
 	API.getDailyPermis().success(function (permis) {
 		$scope.permis = permis;
-		window.setTimeout(function () {
-		  $('[data-toggle="tooltip"]').tooltip();			
+		// window.setTimeout(function () {
+		//   $('[data-toggle="tooltip"]').tooltip();			
 		  cfpLoadingBar.complete();
-		}, 100);
+		// }, 100);
 	});
 
 }])
@@ -129,10 +129,10 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	cfpLoadingBar.start();
 	API.getAllPermis().success(function (permis) {
 		$scope.permis = permis;
-		window.setTimeout(function () {
-		  $('[data-toggle="tooltip"]').tooltip();
+		// window.setTimeout(function () {
+		//   $('[data-toggle="tooltip"]').tooltip();
 		  cfpLoadingBar.complete();	
-		}, 100);
+		// }, 100);
 	});
 
 	$scope.print = function (id) {
@@ -145,15 +145,15 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisCopyCtrl', ['$scope', 'API', 'cfpLoadingBar', '$modal', function ($scope, API, cfpLoadingBar, $modal) {
+.controller('PermisCopyCtrl', ['$scope', 'API', 'cfpLoadingBar', '$modal', '$location', function ($scope, API, cfpLoadingBar, $modal, $location) {
 
 	cfpLoadingBar.start();
 	API.getDailyPermis().success(function (permis) {
 		$scope.permis = permis;
-		window.setTimeout(function () {
-		  $('[data-toggle="tooltip"]').tooltip();			
+		// window.setTimeout(function () {
+		//   $('[data-toggle="tooltip"]').tooltip();			
 		  cfpLoadingBar.complete();
-		}, 100);
+		// }, 100);
 	});
 
 	$scope.open = function (worNo) {
@@ -179,7 +179,9 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 					}],
 				});				
 			} else {
-				window.alert('Ce permis ne possède pas de copie');
+				if (window.confirm('Ce permis ne possède pas de copie, voulez-vous en créer un nouveau?')) {
+					$location.path('/permis/manage/' + worNo);
+				}
 			}
 		});
 	};
@@ -194,10 +196,10 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	cfpLoadingBar.start();
 	API.get('/permisall/all').success(function (permis) {
 		$scope.permis = permis;
-		window.setTimeout(function () {
-		  $('[data-toggle="tooltip"]').tooltip();
+		// window.setTimeout(function () {
+		//   $('[data-toggle="tooltip"]').tooltip();
 		  cfpLoadingBar.complete();	
-		}, 100);
+		// }, 100);
 	});
 
 	$scope.showPermis = function (id) {
@@ -218,6 +220,8 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	$scope.permis = {
 		S2_OP_OA: true,
+		S1_HEURE_DE: '7.00',
+		S1_HEURE_A: '18.00',
 	};
 
 
@@ -240,6 +244,8 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			$scope.permis.S1_SECTEUR = permis[0].NIV1_DESCR;
 			$scope.permis.PERMIS = $scope.permis.WOR_NO + '-' + $scope.permis.NO_PERMIS;
 			$scope.permis.S8_USERNAME = $rootScope.me.get_title();
+			// $scope.permis.S1_HEURE_DE = '7.00';
+			// $scope.permis.S1_HEURE_A = '18.00';
 		});
 	});
 
@@ -329,6 +335,8 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	$scope.permis = {
 		S2_OP_OA: true,
+		S1_HEURE_DE: '7.00',
+		S1_HEURE_A: '18.00',
 	};
 
 
@@ -409,6 +417,9 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			WSQ_PREF: 'Z',
 			NO_PERMIS: permis.length + 1,
 			PERMIS: '0000' + (permis.length + 1),
+			S1_HEURE_DE: '7.00',
+			S1_HEURE_A: '18.00',
+
 		};		
 		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
 
