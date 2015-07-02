@@ -221,7 +221,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	$scope.permis = {
 		S2_OP_OA: true,
 		S1_HEURE_DE: '7.00',
-		S1_HEURE_A: '18.00',
+		S1_HEURE_A: '17.30',
 	};
 
 
@@ -245,7 +245,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			$scope.permis.PERMIS = $scope.permis.WOR_NO + '-' + $scope.permis.NO_PERMIS;
 			$scope.permis.S8_USERNAME = $rootScope.me.get_title();
 			// $scope.permis.S1_HEURE_DE = '7.00';
-			// $scope.permis.S1_HEURE_A = '18.00';
+			// $scope.permis.S1_HEURE_A = '17.30';
 		});
 	});
 
@@ -336,7 +336,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	$scope.permis = {
 		S2_OP_OA: true,
 		S1_HEURE_DE: '7.00',
-		S1_HEURE_A: '18.00',
+		S1_HEURE_A: '17.30',
 	};
 
 
@@ -418,7 +418,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			NO_PERMIS: permis.length + 1,
 			PERMIS: '0000' + (permis.length + 1),
 			S1_HEURE_DE: '7.00',
-			S1_HEURE_A: '18.00',
+			S1_HEURE_A: '17.30',
 
 		};		
 		$scope.permis.S8_USERNAME = $rootScope.me.get_title();

@@ -25,24 +25,24 @@
 	<thead>
 		<tr>
 			<th>
-				<a href="javascript:;" ng-click="sortType = 'WOR_NO'; sortReverse = !sortReverse">
+				<a href="javascript:;" ng-init="sortType = 'WOR_NO'" ng-click="sortType = 'WOR_NO'; sortReverse = !sortReverse">
 					Numéro
 					<span ng-show="sortType == 'WOR_NO' && !sortReverse" class="fa fa-caret-down"></span>
 					<span ng-show="sortType == 'WOR_NO' && sortReverse" class="fa fa-caret-up"></span>
 				</a>
 			</th>
-			<th>
+<!-- 			<th>
 				<a href="javascript:;" ng-click="sortType = 'FUN_CODE'; sortReverse = !sortReverse">
 					Équipement
 					<span ng-show="sortType == 'FUN_CODE' && !sortReverse" class="fa fa-caret-down"></span>
 					<span ng-show="sortType == 'FUN_CODE' && sortReverse" class="fa fa-caret-up"></span>
 				</a>
 			</th>
-			<th>
-				<a href="javascript:;" ng-click="sortType = 'FUN_DESCR'; sortReverse = !sortReverse">
+ -->			<th>
+				<a href="javascript:;" ng-click="sortType = 'NIV1_DESCR'; sortReverse = !sortReverse">
 					Secteur
-					<span ng-show="sortType == 'FUN_DESCR' && !sortReverse" class="fa fa-caret-down"></span>
-					<span ng-show="sortType == 'FUN_DESCR' && sortReverse" class="fa fa-caret-up"></span>
+					<span ng-show="sortType == 'NIV1_DESCR' && !sortReverse" class="fa fa-caret-down"></span>
+					<span ng-show="sortType == 'NIV1_DESCR' && sortReverse" class="fa fa-caret-up"></span>
 				</a>
 			</th>
 			<th>
@@ -57,10 +57,11 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="p in permis | orderBy:sortType:sortReverse | filter:search" data-toggle="tooltip" data-placement="bottom" title="{{p.WOR_DESCR}}">
-			<td>{{p.WSQ_PREF}} - {{p.WOR_NO}}</td>
-			<td>{{p.FUN_CODE}}</td>
-			<td>{{p.FUN_DESCR}}</td>
-			<td>{{p.WOR_DESCR.substring(0,50)}}...</td>
+			<td><strong style="font-size: 1.4em;">{{p.WOR_NO}}</strong></td>
+			<!-- <td>{{p.FUN_CODE}}</td> -->
+			<!-- <td>{{p.NIV1_DESCR}}</td> -->
+			<td>{{p.NIV1_DESCR}}</td>
+			<td>{{p.WOR_DESCR.substring(0,75)}}...</td>
 
 			<td>
 				<a class="btn btn-sm btn-success" ng-click="open(p.WOR_NO)" href="javascript:;">Choisir</a>
