@@ -16,7 +16,7 @@
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-search"></i></div>
 
-      <input type="text" class="form-control" placeholder="Enter a search request" ng-model="search">
+      <input type="text" class="form-control" autofocus placeholder="Enter a search request" ng-model="search">
 
     </div>      
   </div>
@@ -54,6 +54,7 @@
 				</a>
 			</th>
 			<th>&nbsp;</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -64,6 +65,9 @@
 			<td>{{p.WOR_DESCR.substring(0,75)}}...</td>
 			<td>
 				<a class="btn btn-sm btn-success" href="#/permis/manage/{{p.WOR_NO}}">Continuer</a>
+			</td>
+			<td>
+				<a ng-show="p.fiche" class="btn btn-sm btn-primary" href="{{p.fiche.Nom_Fichier}}">Fiche</a>
 			</td>
 		</tr>
 	</tbody>

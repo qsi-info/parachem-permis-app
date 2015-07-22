@@ -109,15 +109,25 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisNewCtrl', ['$scope', 'API', 'cfpLoadingBar', function ($scope, API, cfpLoadingBar) {
+.controller('PermisNewCtrl', ['$scope', 'API', 'cfpLoadingBar', '$http', function ($scope, API, cfpLoadingBar, $http) {
+
+	$('input[autofocus]').focus();
 
 	cfpLoadingBar.start();
 	API.getDailyPermis().success(function (permis) {
 		$scope.permis = permis;
-		// window.setTimeout(function () {
-		//   $('[data-toggle="tooltip"]').tooltip();			
-		  cfpLoadingBar.complete();
-		// }, 100);
+		
+		$scope.permis.forEach(function (p) {
+			$http
+			.get('http://parasrv12.parachem.ca:8005/equipementfiche?Equipement_Code=' + p.FUN_CODE)
+			.success(function (f) {
+				if (f.length > 0) {
+					p.fiche = f[0];
+				}
+			});
+			cfpLoadingBar.complete();
+		})
+
 	});
 
 }])
@@ -125,6 +135,9 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 .controller('PermisSeeCtrl', ['$scope', 'API', 'cfpLoadingBar', 'Utils', function ($scope, API, cfpLoadingBar, Utils) {
+
+	$('input[autofocus]').focus();
+
 
 	cfpLoadingBar.start();
 	API.getAllPermis().success(function (permis) {
@@ -145,15 +158,27 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisCopyCtrl', ['$scope', 'API', 'cfpLoadingBar', '$modal', '$location', function ($scope, API, cfpLoadingBar, $modal, $location) {
+.controller('PermisCopyCtrl', ['$scope', 'API', 'cfpLoadingBar', '$modal', '$location', '$http', function ($scope, API, cfpLoadingBar, $modal, $location, $http) {
+
+	$('input[autofocus]').focus();
+
 
 	cfpLoadingBar.start();
 	API.getDailyPermis().success(function (permis) {
 		$scope.permis = permis;
-		// window.setTimeout(function () {
-		//   $('[data-toggle="tooltip"]').tooltip();			
-		  cfpLoadingBar.complete();
-		// }, 100);
+
+		$scope.permis.forEach(function (p) {
+			$http
+			.get('http://parasrv12.parachem.ca:8005/equipementfiche?Equipement_Code=' + p.FUN_CODE)
+			.success(function (f) {
+				if (f.length > 0) {
+					p.fiche = f[0];
+				}
+			});
+			cfpLoadingBar.complete();
+		})
+
+
 	});
 
 	$scope.open = function (worNo) {
@@ -191,15 +216,24 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisDTCtrl', ['$scope', 'API', 'cfpLoadingBar', 'Utils', function ($scope, API, cfpLoadingBar, Utils) {
+.controller('PermisDTCtrl', ['$scope', 'API', 'cfpLoadingBar', 'Utils', '$http', function ($scope, API, cfpLoadingBar, Utils, $http) {
+
+	$('input[autofocus]').focus();
+
 
 	cfpLoadingBar.start();
 	API.get('/permisall/all').success(function (permis) {
 		$scope.permis = permis;
-		// window.setTimeout(function () {
-		//   $('[data-toggle="tooltip"]').tooltip();
-		  cfpLoadingBar.complete();	
-		// }, 100);
+		$scope.permis.forEach(function (p) {
+			$http
+			.get('http://parasrv12.parachem.ca:8005/equipementfiche?Equipement_Code=' + p.FUN_CODE)
+			.success(function (f) {
+				if (f.length > 0) {
+					p.fiche = f[0];
+				}
+			});
+			cfpLoadingBar.complete();
+		})
 	});
 
 	$scope.showPermis = function (id) {
