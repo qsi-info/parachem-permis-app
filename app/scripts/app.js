@@ -633,7 +633,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
   var service = {};
 
-  service.popupWindow = function (url, width, height) {
+  service.popupWindow = function (url, width, height, hasFeatures) {
     var screenX = typeof window.screenX !== 'undefined' ? window.screenX : window.screenLeft;
     var screenY = typeof window.screenY !== 'undefined' ? window.screenY : window.screenTop;
     var outerWidth = typeof window.outerWidth !== 'undefined' ? window.outerWidth : document.body.clientWidth;
@@ -642,6 +642,14 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
     var top = window.parseInt(screenY + ((outerHeight - height) / 2.5), 10);
     var features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top;
     features = features.concat(',scrollbars=no,toolbar=no,menubar=no,status=no,location=no,directories=no');
+
+    if (hasFeatures === 'undefined') {
+    	hasFeatures = true;
+    }
+
+    if (!hasFeatures) {
+    	features = '';
+    }
 
     var newWindow = window.open(url, '', features);
 
