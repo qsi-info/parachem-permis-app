@@ -641,14 +641,13 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
     var left = window.parseInt(screenX + ((outerWidth - width) / 2), 10);
     var top = window.parseInt(screenY + ((outerHeight - height) / 2.5), 10);
     var features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top;
-    features = features.concat(',scrollbars=no,toolbar=no,menubar=no,status=no,location=no,directories=no');
 
     if (hasFeatures === 'undefined') {
     	hasFeatures = true;
     }
 
-    if (!hasFeatures) {
-    	features = '';
+    if (hasFeatures) {
+	    features = features.concat(',scrollbars=no,toolbar=no,menubar=no,status=no,location=no,directories=no');
     }
 
     var newWindow = window.open(url, '', features);
