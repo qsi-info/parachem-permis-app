@@ -151,7 +151,7 @@
 					<tr>
 						<td>L'exécutant:</td>
 						<td ng-show="pageType != 'copy'">
-							<select class="form-control" ng-required="true" ng-model="permis.S1_ENTREPRENEURIAT" ng-change="setExec()">
+							<select class="form-control" required="required" ng-required="true" ng-model="permis.S1_ENTREPRENEURIAT" ng-change="setExec()">
 								<option></option>
 								<option value="Entrepreneur / contractor">Entrepreneur</option>
 								<option value="Parachem">ParaChem</option>
@@ -161,7 +161,7 @@
 							<input type="text" readonly class="form-control" ng-model="permis.S1_ENTREPRENEURIAT"/>
 						</td>
 						<td ng-show="pageType != 'copy'">
-							<select class="form-control" ng-required="true" ng-model="permis.S1_RESPONSABLEEXECUTANT" ng-options="item.Title as item.Title for item in execs">
+							<select class="form-control" required="required" ng-required="true" ng-model="permis.S1_RESPONSABLEEXECUTANT" ng-options="item.Title as item.Title for item in execs">
 								<option></option>
 							</select>
 						</td>
@@ -838,7 +838,7 @@
 							<a ng-click="chooseOtherMaster()" ng-show="pageType !== 'see'">choisir un autre maître</a>
 						</td>
 						<td ng-show="!currentMaster">
-							<select class="form-control" ng-required="true" ng-model="permis.S8_USERNAME" ng-options="item.Maitre.Title as item.Maitre.Title for item in masters">
+							<select class="form-control" required="required" ng-required="true" ng-model="permis.S8_USERNAME" ng-options="item.Maitre.Title as item.Maitre.Title for item in masters">
 								<option></option>
 							</select>
 							<a ng-click="chooseCurrentMaster()">je suis le maître</a>
