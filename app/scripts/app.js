@@ -93,7 +93,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('HomeCtrl', ['$scope', function ($scope) {
+.controller('HomeCtrl', ['$scope', 'Utils', function ($scope, Utils) {
 
 
 	$scope.permisTiles = [
@@ -103,6 +103,29 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 		{ title: 'Non-planifiés', icon: 'fa-list', href: '#/permis/dt', color: 'gray' },
 		{ title: 'Permis sans DT', icon: 'fa-pencil', href: '#/permis/blank', color: 'black' },
 	];
+
+
+	$scope.openMetiers = function () {
+		var url = 'http://intranet/_layouts/15/start.aspx#/Lists/Metiers%20ParaChem/AllItems.aspx';
+		Utils.popupWindow(url, 1200, 700);		
+	};
+
+	$scope.openEntrepreneurs = function () {
+		var url = 'http://intranet/_layouts/15/start.aspx#/Lists/Entrepreneurs/AllItems.aspx';
+		Utils.popupWindow(url, 1200, 700);		
+	};
+
+	$scope.openMaitres = function () {
+		var url = 'http://intranet/_layouts/15/start.aspx#/Lists/Liste%20Maitres%20Permis/AllItems.aspx';
+		Utils.popupWindow(url, 1200, 700);		
+	};
+
+	$scope.openFiches = function () {
+		var url = 'http://parasrv12.parachem.ca:8005';
+		Utils.popupWindow(url, 1200, 700);		
+	};
+
+
 
 }])
 
