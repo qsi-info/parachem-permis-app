@@ -87,12 +87,16 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	return new SharePoint.API.List('Entrepreneurs');
 }])
 
+.factory('MasterList', ['SharePoint', function (SharePoint) {
+	return new SharePoint.API.List('Liste Maitres Permis');
+}])
+
 
 
 .controller('HomeCtrl', ['$scope', function ($scope) {
 
 
-	$scope.tiles = [
+	$scope.permisTiles = [
 		{ title: 'Nouveau', icon: 'fa-plus-circle', href: '#/permis/new', color: 'darkGreen' },
 		{ title: 'Copier', icon: 'fa-files-o', href: '#/permis/copy', color: 'darkRed' },
 		{ title: 'Consulter', icon: 'fa-question', href: '#/permis/see', color: 'darkBlue' },
@@ -246,7 +250,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisManageCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location) {
+.controller('PermisManageCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', 'MasterList', function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location, MasterList) {
 
 	$scope.action = 'Création d\'un nouveau permis';
 
@@ -313,12 +317,30 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	};
 
 
+	$scope.currentMaster = true;
+
+	$scope.chooseOtherMaster = function () {
+		MasterList
+		.all('$expand=Maitre&$select=Maitre/Title')
+		.then(function (masters) {
+			$scope.masters = masters
+			// $scope.permis.S8_USERNAME = '';
+			$scope.currentMaster = false;
+		})
+	};
+
+	$scope.chooseCurrentMaster = function () {
+		$scope.currentMaster = true;
+		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
+	};
+
+
 }])
 
 
 
 
-.controller('PermisManageCopyCtrl', ['$routeParams', '$scope', 'API', '$rootScope', 'Utils', '$location', function ($routeParams, $scope, API, $rootScope, Utils, $location) {
+.controller('PermisManageCopyCtrl', ['$routeParams', '$scope', 'API', '$rootScope', 'Utils', '$location', 'MasterList', function ($routeParams, $scope, API, $rootScope, Utils, $location, MasterList) {
 
 	$scope.action = 'Copie d\'un permis existant';
 	$scope.pageType = 'copy';
@@ -352,8 +374,26 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
-
 	};
+
+
+	$scope.currentMaster = true;
+
+	$scope.chooseOtherMaster = function () {
+		MasterList
+		.all('$expand=Maitre&$select=Maitre/Title')
+		.then(function (masters) {
+			$scope.masters = masters
+			// $scope.permis.S8_USERNAME = '';
+			$scope.currentMaster = false;
+		})
+	};
+
+	$scope.chooseCurrentMaster = function () {
+		$scope.currentMaster = true;
+		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
+	};
+
 
 }])
 
@@ -361,7 +401,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisManageDTCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location) {
+.controller('PermisManageDTCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', 'MasterList',function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location, MasterList) {
 
 	$scope.action = 'Création d\'un nouveau permis';
 
@@ -425,6 +465,23 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	};
 
 
+	$scope.currentMaster = true;
+
+	$scope.chooseOtherMaster = function () {
+		MasterList
+		.all('$expand=Maitre&$select=Maitre/Title')
+		.then(function (masters) {
+			$scope.masters = masters
+			// $scope.permis.S8_USERNAME = '';
+			$scope.currentMaster = false;
+		})
+	};
+
+	$scope.chooseCurrentMaster = function () {
+		$scope.currentMaster = true;
+		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
+	};
+
 }])
 
 
@@ -433,7 +490,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisBlankCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', '$http', function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location, $http) {
+.controller('PermisBlankCtrl', ['$scope', '$routeParams', 'API', 'EntrepreneursList', 'MetiersList', '$rootScope', 'Utils', '$location', '$http', 'MasterList', function ($scope, $routeParams, API, EntrepreneursList, MetiersList, $rootScope, Utils, $location, $http, MasterList) {
 
 	$scope.action = 'Création d\'un nouveau permis sans DT';
 
@@ -461,25 +518,6 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-	// API.getPermisNumberOnly($routeParams.id)
-	// .success(function (foundPermis) {
-	// 	$scope.permis.NO_PERMIS = ''.concat(foundPermis.length + 1);
-	// 	API.getPermisDt($routeParams.id)
-	// 	.success(function (permis) {
-	// 		if (permis.length < 1) {
-	// 			return;
-	// 		}
-	// 		for (var prop in permis[0]) {
-	// 			if (permis[0].hasOwnProperty(prop)) {
-	// 				$scope.permis[prop] = permis[0][prop];
-	// 			}
-	// 		}
-	// 		$scope.permis.S1_SECTEUR = permis[0].NIV1_DESCR;
-	// 		$scope.permis.PERMIS = $scope.permis.WOR_NO + '-' + $scope.permis.NO_PERMIS;
-	// 		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
-	// 	});
-	// });
-
 	$scope.setExec = function () {
 		if ($scope.permis.S1_ENTREPRENEURIAT === 'Entrepreneur / contractor') {
 			EntrepreneursList.all('$select=Title').then(function (contractors) {
@@ -506,7 +544,25 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
+	};
 
+
+
+	$scope.currentMaster = true;
+
+	$scope.chooseOtherMaster = function () {
+		MasterList
+		.all('$expand=Maitre&$select=Maitre/Title')
+		.then(function (masters) {
+			$scope.masters = masters
+			// $scope.permis.S8_USERNAME = '';
+			$scope.currentMaster = false;
+		})
+	};
+
+	$scope.chooseCurrentMaster = function () {
+		$scope.currentMaster = true;
+		$scope.permis.S8_USERNAME = $rootScope.me.get_title();
 	};
 
 
@@ -519,7 +575,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 
-.controller('PermisManageSeeCtrl', ['$routeParams', '$scope', 'API', '$rootScope', 'Utils', '$location', function ($routeParams, $scope, API, $rootScope, Utils, $location) {
+.controller('PermisManageSeeCtrl', ['$routeParams', '$scope', 'API', '$rootScope', 'Utils', '$location', 'MasterList', function ($routeParams, $scope, API, $rootScope, Utils, $location, MasterList) {
 
 
 	$scope.action = 'Consultation d\'un permis existant';
@@ -542,6 +598,8 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 		$location.path('/');
 
 	};
+
+	$scope.currentMaster = true;
 
 }])
 
