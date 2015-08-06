@@ -175,10 +175,10 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 		// }, 100);
 	});
 
-	$scope.print = function (id) {
-		var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
-		Utils.popupWindow(url, 600, 10);
-	};
+	// $scope.print = function (id) {
+	// 	var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
+	// 	Utils.popupWindow(url, 1000, 1000, false);
+	// };
 
 
 }])
@@ -617,7 +617,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	$scope.print = function () {
 		var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + $scope.permis.id;
-		Utils.popupWindow(url, 600, 50);
+		var open = Utils.popupWindow(url, 1000, 1000, false);
 		$location.path('/');
 
 	};
