@@ -10,7 +10,7 @@ angular.module('AngularSharePointApp')
 
 	.factory('API', ['$http', function ($http) {
 
-		var server = 'http://parasrv12.parachem.ca:8001';
+		var server = 'http://parasrv12.parachem.ca:8003';
 
 		var service = {};
 
