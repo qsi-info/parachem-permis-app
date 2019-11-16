@@ -235,30 +235,16 @@
 					<tr>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_OP_OA"/>
-								Opérateur prévenu / Operator advised
-							</label>
-						</td>
-						<td>
-							<label>
-								<input type="checkbox" ng-model="permis.S2_AE_EA"/>
-								Autorisation d'excavation / Excavation approval
-							</label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>
 								<input type="checkbox" ng-model="permis.S2_PR_RP"/>
 								Protection respiratoire / Respiratory protection
 							</label>
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_AS_WA"/>
-								Autorisation pour soudure / Welding approval
+								<input type="checkbox" ng-model="permis.S2_SB_BA"/>
+								Secteur barricadé / Area barricated
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -269,10 +255,10 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_SB_BA"/>
-								Secteur barricadé / Area barricated
+								<input type="checkbox" ng-model="permis.S2_EP_PS"/>
+								Écran de protection / Protective screen
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -283,11 +269,25 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_EP_PS"/>
-								Écran de protection / Protective screen
+								<input type="checkbox" ng-model="permis.S2_OM_ME"/>
+								Outillage motorisé / Motorized equipment
 							</label>
-						</td>
+						</td>						
 					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_DP_HP"/>
+								Double protection auditive / Double hearing protection
+							</label>
+						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_VA_MV"/>
+								Véhicule automobile / Motor vehicle
+							</label>
+						</td>											
+					</tr>					
 					<tr>
 						<td>
 							<label>
@@ -297,10 +297,10 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_OM_ME"/>
-								Outillage motorisé / Motorized equipment
+								<input type="checkbox" ng-model="permis.S2_DG_GD"/>
+								Détecteur de gaz / Gas detector
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -311,10 +311,10 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_VA_MV"/>
-								Véhicule automobile / Motor vehicle
+								<input type="checkbox" ng-model="permis.S2_CR_RC"/>
+								Communication radio / Radio communication
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -325,10 +325,10 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_DG_GD"/>
-								Détecteur de gaz / Gas detector
+								<input type="checkbox" ng-model="permis.S2_MT_EG"/>
+								Mise à la terre des équipements / Equipment grounded
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -339,44 +339,16 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_CR_RC"/>
-								Communication radio / Radio communication
+								<input type="checkbox" ng-model="permis.S2_OA_SP"/>
+								Outils anti-étincelle / Spark-proof tools
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
 							<label>
 								<input type="checkbox" ng-model="permis.S2_EA_SL"/>
 								Échelle attachée / Secured ladder
-							</label>
-						</td>
-						<td>
-							<label>
-								<input type="checkbox" ng-model="permis.S2_MT_EG"/>
-								Mise à la terre des équipements / Equipment grounded
-							</label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>
-								<input type="checkbox" ng-model="permis.S2_VF_AM"/>
-								Ventilsation forcée / Air mover
-							</label>
-						</td>
-						<td>
-							<label>
-								<input type="checkbox" ng-model="permis.S2_OA_SP"/>
-								Outils anti-étincelle / Spark-proof tools
-							</label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>
-								<input type="checkbox" ng-model="permis.S2_AL_LE"/>
-								Appareil de levage / Lifting equipment
 							</label>
 						</td>
 						<td>
@@ -389,16 +361,30 @@
 					<tr>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_AL_LA"/>
-								Autorisation de levage / Lifting approval
+								<input type="checkbox" ng-model="permis.S2_VF_AM"/>
+								Ventilsation forcée / Air mover
 							</label>
 						</td>
 						<td>
 							<label>
 								<input type="checkbox" ng-model="permis.S2_OP_AD"/>
-								Équipement anti-déflagrant / Explosion-proof equipment
+								Outils pneumatiques / Air-driven tools
+							</label>
+						</td>						
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AL_LE"/>
+								Appareil de levage / Lifting equipment
 							</label>
 						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_BE_WH"/>
+								Boyau à eau / Water hose
+							</label>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -409,10 +395,10 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_BE_WH"/>
-								Boyau à eau / Water hose
+								<input type="checkbox" ng-model="permis.S2_CP_PL"/>
+								Cadenas personnel / Personal lock
 							</label>
-						</td>
+						</td>						
 					</tr>
 					<tr>
 						<td>
@@ -423,16 +409,29 @@
 						</td>
 						<td>
 							<label>
-								<input type="checkbox" ng-model="permis.S2_CP_PL"/>
-								Cadenas personnel / Personal lock
+								<input type="checkbox" ng-model="permis.S2_CG_IC"/>
+								Crampons à glace / Ice crampons
+							</label>
+						</td>						
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_MA_BR"/>
+								Manchons anti-brûlures / Burn-resistant sleeves
 							</label>
 						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_CE_CS"/>
+								Contenir étincelles / Contain sparks
+							</label>
+						</td>						
 					</tr>
+
 				</tbody>
 			</table>
 		</div>
-
-
 
 
 
@@ -500,7 +499,49 @@
 								<input type="checkbox" ng-model="permis.S3_SI_FL"/>
 								<span>Surveillant d'incendie / Fire lookout man</span>
 							</label>
+						</td>							
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AL_LA"/>
+								Autorisation de levage / Lifting approval
+							</label>
+						</td>						
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AE_EA"/>
+								Autorisation d'excavation / Excavation approval
+							</label>
+						</td>						
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S2_AS_WA"/>
+								Autorisation pour soudure / Welding approval
+							</label>
 						</td>	
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S3_DP_PD"/>
+								Dérogation de procédure / Procedure derogation
+							</label>
+						</td>																	
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S3_PS_RP"/>
+								Plan de sauvetage / Rescue plan
+							</label>
+						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S3_AP_PA"/>
+								Autorisation de photographie / Picture authorization
+							</label>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -710,6 +751,15 @@
 						<td>
 							<input type="text" class="form-control" ng-model="permis.S5_AU_OT_DESCRIPTION"/>
 						</td>
+						<td>
+							<label>
+								<input type="checkbox" ng-model="permis.S5_OI_IB"/>
+								Ouverture initiale / First break
+							</label>
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="permis.S5_OI_IB_DESCRIPTION"/>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -737,8 +787,8 @@
 
 
 <!-- SECTION 6 -->
-		<h4>6. Vérification atmosphérique / Atmospheric verification</h4>
-		<div class="col-md-12 section">
+		<!-- <h4>6. Vérification atmosphérique / Atmospheric verification</h4> -->
+<!-- 		<div class="col-md-12 section">
 			<table class="table">
 				<tbody>
 					<tr>
@@ -773,7 +823,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</div> -->
 
 <!-- END SECTION 6 -->
 
