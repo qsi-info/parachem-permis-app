@@ -37,7 +37,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	.when('/permis/see/:id', {
 		controller: 'PermisManageSeeCtrl',
-		templateUrl: 'views/permis/manage.html',
+		templateUrl: 'views/permis/manage-v3.html',
 	})
 
 	.when('/permis/copy', {
@@ -53,17 +53,17 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	.when('/permis/managedt/:id', {
 		controller: 'PermisManageDTCtrl',
-		templateUrl: 'views/permis/manage.html',
+		templateUrl: 'views/permis/manage-v3.html',
 	})
 
 	.when('/permis/manage/:id', {
 		controller: 'PermisManageCtrl',
-		templateUrl: 'views/permis/manage.html',
+		templateUrl: 'views/permis/manage-v3.html',
 	})
 
 	.when('/permis/manage-copy/:wor_no/:permis', {
 		controller: 'PermisManageCopyCtrl',
-		templateUrl: 'views/permis/manage.html',
+		templateUrl: 'views/permis/manage-v3.html',
 	})
 
 	.when('/permis/success', {
@@ -72,7 +72,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 	.when('/permis/blank', {
 		controller: 'PermisBlankCtrl',
-		templateUrl: 'views/permis/manage.html',
+		templateUrl: 'views/permis/manage-v3.html',
 	})
 
 }])
