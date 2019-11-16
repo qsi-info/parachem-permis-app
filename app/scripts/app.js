@@ -523,7 +523,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	$scope.minDate = new Date();
 
 	$http
-	.get('http://parasrv12.parachem.ca:8001/permis?WSQ_PREF=Z')
+	.get('http://parasrv12.parachem.ca:8003/permis?WSQ_PREF=Z')
 	.success(function (permis) {
 		$scope.permis = {
 			S2_OP_OA: true,
