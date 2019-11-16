@@ -260,7 +260,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 				}
 			});
 			cfpLoadingBar.complete();
-		})
+		});
 	});
 
 	$scope.showPermis = function (id) {
