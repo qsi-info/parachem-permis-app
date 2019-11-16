@@ -176,7 +176,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	});
 
 	// $scope.print = function (id) {
-	// 	var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
+	// 	var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
 	// 	Utils.popupWindow(url, 1000, 1000, false);
 	// };
 
@@ -264,7 +264,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 	});
 
 	$scope.showPermis = function (id) {
-		var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
+		var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + id + '&CharCode=251';
 		Utils.popupWindow(url, 600, 10);
 	};
 
@@ -332,7 +332,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 		API.createPermis($scope.permis)
 		.success(function (createdPermis) {
-			var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
+			var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
@@ -393,7 +393,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 		API.createPermis($scope.permis)
 		.success(function (createdPermis) {
-			var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
+			var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
@@ -480,7 +480,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 		API.createPermis($scope.permis)
 		.success(function (createdPermis) {
-			var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
+			var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
@@ -563,7 +563,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 		API.createPermis($scope.permis)
 		.success(function (createdPermis) {
-			var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
+			var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId='.concat(createdPermis.id);
 			Utils.popupWindow(url, 600, 10);
 			$location.path('/')
 		});
@@ -616,7 +616,7 @@ angular.module('AngularSharePointApp', ['ngSharePoint', 'ngRoute', 'ngMetro', 'c
 
 
 	$scope.print = function () {
-		var url = 'http://paradevsrv02/reportserver?/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + $scope.permis.id;
+		var url = 'http://paradevsrv02/reportserver?/Permis_V3/permistravailrealprint&rs:Command=Render&rc:Toolbar=true&PermisId=' + $scope.permis.id;
 		var open = Utils.popupWindow(url, 1000, 1000, false);
 		$location.path('/');
 
